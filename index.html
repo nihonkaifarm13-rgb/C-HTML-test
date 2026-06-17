@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#0c121d">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0c121d"/>
+    <text x="600" y="350" font-family="serif" font-size="80" font-weight="700" fill="#f3f6fa" text-anchor="middle">NIHONKAI</text>
+    <text x="600" y="450" font-family="serif" font-size="80" font-weight="700" fill="#2a6a93" text-anchor="middle">FARM</text>
+    <line x1="400" y1="500" x2="800" y2="500" stroke="#2a6a93" stroke-width="3"/>
+  </svg>
+</template>
+<x-dc>
+<helmet>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NIHONKAI FARM — 京都・京丹後でふくむらさきを育てる若者の農園。かっこいい農業を、僕らの世代から。">
+  <title>NIHONKAI FARM — かっこいい農業を、僕らの世代から</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Shippori+Mincho+B1:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'Zen Kaku Gothic New', system-ui, sans-serif; color: #0c121d; background: #eef1f5; -webkit-font-smoothing: antialiased; }
+    ::selection { background: #2f7bb0; color: #fff; }
+    @keyframes nkf-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+    @keyframes nkf-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes nkf-fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes nkf-slideInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes nkf-slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes nkf-slideInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes nkf-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    @keyframes nkf-shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 60; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(20px, 5vw, 64px); height: 72px; background: rgba(11, 17, 27, 0); transition: background 0.45s ease; backdrop-filter: saturate(1.2) blur(6px); }
+    nav.scrolled { background: rgba(11, 17, 27, 0.9); }
+    nav::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 140px; background: linear-gradient(180deg, rgba(8, 12, 20, 0.5), transparent); pointer-events: none; z-index: -1; }
+    nav a { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    nav img { height: 30px; width: auto; }
+    nav .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 34px); }
+    nav .nav-links a { font-size: 13px; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.82); transition: color 0.3s ease; }
+    nav .nav-links a:hover { color: #9fd0ee; }
+    nav .instagram-btn { font: 700 11px 'Space Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; color: #0c121d; background: #f1f4f7; padding: 9px 16px; border-radius: 999px; transition: all 0.3s ease; }
+    nav .instagram-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); }
+
+    header { position: relative; height: 100svh; min-height: 600px; width: 100%; background: #0c121d; overflow: hidden; }
+    header .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    header .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 15, 24, 0.2) 0%, rgba(10, 15, 24, 0) 30%, rgba(10, 15, 24, 0.12) 60%, rgba(8, 12, 20, 0.6) 100%); }
+    header .hero-content { position: absolute; left: clamp(20px, 5vw, 64px); right: clamp(20px, 5vw, 64px); bottom: clamp(40px, 7vh, 80px); animation: nkf-rise 0.9s ease both; z-index: 2; }
+    header .hero-content .label { font: 700 12px 'Space Mono', monospace; letter-spacing: 0.26em; text-transform: uppercase; color: #9fd0ee; margin-bottom: 22px; animation: nkf-slideInLeft 0.8s ease 0.2s both; }
+    header .hero-content h1 { margin: 0; font-family: 'Shippori Mincho B1', serif; font-weight: 700; color: #f3f6fa; font-size: clamp(34px, 6.4vw, 82px); line-height: 1.18; letter-spacing: 0.01em; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3); animation: nkf-slideInLeft 0.8s ease 0.4s both; }
+    header .hero-content .accent { color: #2a6a93; }
+    header .hero-line { width: 54px; height: 2px; background: #2f7bb0; margin-top: 30px; animation: nkf-slideInLeft 0.8s ease 0.6s both; }
+    .scroll-cue { position: absolute; left: 50%; transform: translateX(-50%); bottom: 22px; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; }
+    .scroll-cue span:first-child { font: 700 10px 'Space Mono', monospace; letter-spacing: 0.24em; color: rgba(255, 255, 255, 0.7); }
+    .scroll-cue span:last-child { display: block; width: 1px; height: 34px; background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); animation: nkf-bob 2s ease-in-out infinite; }
+
+    section { scroll-margin-top: 72px; }
+    section.light { background: #eef1f5; padding: clamp(80px, 13vh, 170px) clamp(20px, 6vw, 96px); }
+    section.dark { background: #0d1726; color: #eaf0f6; }
+    .section-title { display: flex; align-items: center; gap: 16px; margin-bottom: clamp(40px, 7vh, 72px); animation: nkf-slideInUp 0.8s ease both; }
+    .section-title .number { font: 700 13px 'Space Mono', monospace; letter-spacing: 0.2em; color: #2a6a93; }
+    .section-title .divider { flex: 1; height: 1px; background: rgba(12, 18, 29, 0.16); }
+    .section-title .label { font: 500 12px 'Space Mono', monospace; letter-spacing: 0.16em; color: rgba(12, 18, 29, 0.45); }
+    section.dark .section-title .number { color: #9fd0ee; }
+    section.dark .section-title .divider { background: rgba(255, 255, 255, 0.16); }
+    section.dark .section-title .label { color: rgba(255, 255, 255, 0.5); }
+
+    h2 { font-family: 'Shippori Mincho B1', serif; font-weight: 700; font-size: clamp(28px, 4.6vw, 60px); line-height: 1.5; letter-spacing: 0.01em; text-wrap: balance; animation: nkf-slideInUp 0.8s ease 0.1s both; }
+    section.light h2 { color: #0c121d; }
+    section.dark h2 { color: #f3f6fa; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(20px, 2.4vw, 32px); }
+    .card { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 1px 0 rgba(12, 18, 29, 0.06), 0 24px 50px -34px rgba(12, 18, 29, 0.35); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); animation: nkf-slideInUp 0.8s ease both; }
+    .card:hover { transform: translateY(-12px); box-shadow: 0 1px 0 rgba(12, 18, 29, 0.08), 0 32px 64px -16px rgba(12, 18, 29, 0.45); }
+    .card-img { position: relative; aspect-ratio: 4/3; background-size: cover; background-position: center; overflow: hidden; }
+    .card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(47, 123, 176, 0) 0%, rgba(47, 123, 176, 0.1) 100%); opacity: 0; transition: opacity 0.4s ease; }
+    .card:hover .card-img::after { opacity: 1; }
+    .badge { position: absolute; top: 16px; left: 16px; font: 700 10px 'Space Mono', monospace; letter-spacing: 0.18em; background: #0c121d; color: #fff; padding: 7px 12px; border-radius: 999px; animation: nkf-slideInLeft 0.6s ease 0.2s both; }
+    .card-content { padding: clamp(24px, 2.6vw, 34px); }
+    .card-meta { font: 700 11px 'Space Mono', monospace; letter-spacing: 0.16em; color: #2a6a93; margin-bottom: 12px; }
+    .card h3 { margin: 0 0 12px; font-weight: 700; font-size: clamp(20px, 1.7vw, 25px); line-height: 1.4; }
+    .card p { margin: 0 0 24px; font-size: 15px; line-height: 1.95; color: rgba(12, 18, 29, 0.66); }
+    .card-btn { display: inline-flex; align-items: center; gap: 8px; font: 700 12px 'Space Mono', monospace; letter-spacing: 0.08em; color: rgba(12, 18, 29, 0.45); padding: 13px 20px; border: 1px dashed rgba(12, 18, 29, 0.28); border-radius: 999px; transition: all 0.3s ease; cursor: pointer; }
+    .card-btn:hover { border-color: #2a6a93; color: #2a6a93; }
+
+    .container { max-width: 1180px; margin: 0 auto; }
+    .container-sm { max-width: 1080px; margin: 0 auto; }
+
+    footer { background: #080c14; color: rgba(255, 255, 255, 0.7); padding: clamp(48px, 8vh, 80px) clamp(20px, 6vw, 96px) clamp(32px, 5vh, 48px); }
+    .footer-content { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: flex-start; }
+    .footer-col { max-width: 340px; }
+    .footer-col img { height: 36px; width: auto; margin-bottom: 20px; }
+    .footer-col p { margin: 0; font-size: 13px; line-height: 2.0; color: rgba(255, 255, 255, 0.55); }
+    .footer-links { display: flex; gap: clamp(40px, 7vw, 90px); flex-wrap: wrap; }
+    .footer-links-col { font: 700 11px 'Space Mono', monospace; letter-spacing: 0.18em; color: rgba(255, 255, 255, 0.4); margin-bottom: 16px; }
+    .footer-links-col ~ * { display: grid; gap: 11px; font-size: 14px; }
+    .footer-links-col ~ * a { color: rgba(255, 255, 255, 0.72); text-decoration: none; transition: color 0.3s ease; }
+    .footer-links-col ~ * a:hover { color: #9fd0ee; }
+    .footer-bottom { max-width: 1180px; margin: clamp(40px, 6vh, 64px) auto 0; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font: 400 11px 'Space Mono', monospace; letter-spacing: 0.06em; color: rgba(255, 255, 255, 0.4); }
+
+    .manifesto-content { max-width: 640px; margin-left: auto; display: grid; gap: 22px; font-size: clamp(15px, 1.15vw, 17px); line-height: 2.05; color: rgba(12, 18, 29, 0.74); }
+    .manifesto-content p { margin: 0; animation: nkf-slideInUp 0.8s ease both; }
+
+    .what-we-do { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); align-items: stretch; }
+    .what-we-do-img { min-height: clamp(320px, 52vh, 640px); background-size: cover; background-position: center; animation: nkf-slideInLeft 0.8s ease both; }
+    .what-we-do-text { padding: clamp(56px, 9vh, 120px) clamp(24px, 5vw, 84px); display: flex; flex-direction: column; justify-content: center; animation: nkf-slideInRight 0.8s ease both; }
+    .what-we-do-text h2 { margin: 0 0 26px; font-weight: 900; font-size: clamp(26px, 3.4vw, 46px); line-height: 1.32; }
+    .what-we-do-text p { margin: 0 0 34px; max-width: 46ch; font-size: clamp(15px, 1.1vw, 17px); line-height: 2.0; color: rgba(234, 240, 246, 0.74); }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag { font: 700 11px 'Space Mono', monospace; letter-spacing: 0.1em; padding: 9px 15px; border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 999px; color: #cfe0ee; transition: all 0.3s ease; }
+    .tag:hover { background: rgba(159, 208, 238, 0.1); border-color: #9fd0ee; }
+
+    .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: clamp(16px, 2vw, 28px); }
+    .member { border-top: 1px solid rgba(255, 255, 255, 0.18); padding-top: 22px; cursor: pointer; transition: all 0.4s ease; animation: nkf-slideInUp 0.8s ease both; }
+    .member:hover { background: rgba(255, 255, 255, 0.04); padding: 22px; margin: -22px; border-radius: 12px; border-top: none; }
+    .member-role { font: 700 13px 'Space Mono', monospace; letter-spacing: 0.14em; color: #9fd0ee; margin-bottom: 14px; }
+    .member h3 { margin: 0 0 8px; font-weight: 700; font-size: 21px; transition: color 0.3s ease; }
+    .member:hover h3 { color: #9fd0ee; }
+    .member p { margin: 0; font-size: 14px; line-height: 1.9; color: rgba(234, 240, 246, 0.7); max-height: 200px; overflow: hidden; transition: all 0.4s ease; }
+    .member.expanded p { max-height: 500px; }
+
+    .place { position: relative; height: clamp(440px, 80vh, 760px); background-size: cover; background-position: center; color: #fff; }
+    .place::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8, 12, 20, 0.5) 0%, rgba(8, 12, 20, 0.08) 30%, rgba(8, 12, 20, 0.62) 100%); }
+    .place-content { position: absolute; left: clamp(20px, 6vw, 96px); right: clamp(20px, 6vw, 96px); bottom: clamp(40px, 8vh, 84px); max-width: 680px; z-index: 2; animation: nkf-slideInUp 0.8s ease both; }
+    .place-label { font: 700 12px 'Space Mono', monospace; letter-spacing: 0.24em; color: #9fd0ee; margin-bottom: 20px; }
+    .place h2 { margin: 0 0 20px; font-family: 'Shippori Mincho B1', serif; font-weight: 700; font-size: clamp(30px, 5vw, 62px); line-height: 1.3; text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35); animation: none; }
+    .place p { margin: 0; font-size: clamp(15px, 1.1vw, 17px); line-height: 2.0; color: rgba(255, 255, 255, 0.84); max-width: 52ch; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4); }
+
+    .whats-next-card { transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .whats-next-card:hover { transform: translateY(-12px); box-shadow: 0 1px 0 rgba(12, 18, 29, 0.08), 0 32px 64px -16px rgba(12, 18, 29, 0.45); }
+
+    .cta { position: relative; background: #0c121d; color: #fff; padding: clamp(90px, 16vh, 200px) clamp(20px, 6vw, 96px); text-align: center; overflow: hidden; }
+    .cta::before { content: ''; position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.16; }
+    .cta-content { position: relative; max-width: 760px; margin: 0 auto; animation: nkf-slideInUp 0.8s ease both; }
+    .cta-label { font: 700 12px 'Space Mono', monospace; letter-spacing: 0.26em; color: #9fd0ee; margin-bottom: 24px; }
+    .cta h2 { margin: 0 0 14px; font-family: 'Shippori Mincho B1', serif; font-weight: 700; font-size: clamp(28px, 5vw, 60px); line-height: 1.35; animation: none; }
+    .cta p { margin: 0 0 40px; font-size: clamp(15px, 1.1vw, 17px); line-height: 1.9; color: rgba(255, 255, 255, 0.72); }
+    .cta-btn { display: inline-flex; align-items: center; gap: 12px; background: #f1f4f7; color: #0c121d; text-decoration: none; padding: 17px 30px; border-radius: 999px; font-weight: 700; font-size: 16px; transition: all 0.3s ease; }
+    .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2); }
+
+    .note { margin: clamp(24px, 4vh, 36px) 0 0; font: 500 12px 'Space Mono', monospace; letter-spacing: 0.04em; color: rgba(12, 18, 29, 0.4); }
+    section.dark .note { color: rgba(255, 255, 255, 0.4); }
+  </style>
+</helmet>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#top">
+    <img src="assets/logo-white.png" alt="NIHONKAI FARM">
+  </a>
+  <div class="nav-links">
+    <a href="#manifesto">想い</a>
+    <a href="#work">仕事</a>
+    <a href="#products">商品</a>
+    <a href="#members">メンバー</a>
+    <a href="https://www.instagram.com/nihonkai_farm/" target="_blank" rel="noopener noreferrer" class="instagram-btn">Instagram</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top">
+  <div class="hero-video" style="background-image: url('https://2e7146e5-44bc-41a7-916a-2c95c32d952f.claudeusercontent.com/v1/design/projects/2e7146e5-44bc-41a7-916a-2c95c32d952f/serve/assets/web/hero-bg.jpg?t=15af558243d21fc83198762cd9868f69ed937901a0d8ace71fb37ccacce07f88.b013cd4b-8507-4459-8721-1f3f7ef3b830.12a120ea-e97d-4c57-b533-c9bee1fc2aa5.1781700838.fp&direct=1'); background-size: cover; background-position: center;"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="label">京都・京丹後 &nbsp;/&nbsp; 日本海に面した畑から</div>
+    <h1>土に向き合う。<br><span class="accent">かっこいい農業を、僕らの世代から。</span></h1>
+    <div class="hero-line"></div>
+  </div>
+  <a href="#manifesto" class="scroll-cue">
+    <span>SCROLL</span>
+    <span></span>
+  </a>
+</header>
+
+<!-- 01 MANIFESTO -->
+<section id="manifesto" class="light">
+  <div class="container-sm">
+    <div class="section-title">
+      <span class="number">01 — MANIFESTO</span>
+      <span class="divider"></span>
+      <span class="label">僕らの想い</span>
+    </div>
+    <div style="border-radius: 18px; overflow: hidden; aspect-ratio: 16/9; background: url('https://2e7146e5-44bc-41a7-916a-2c95c32d952f.claudeusercontent.com/v1/design/projects/2e7146e5-44bc-41a7-916a-2c95c32d952f/serve/assets/web/team-field.jpg?t=5e16d441baf17e99aebcdc0087a63a2fd128954b3d7a30395854ef691c18a624.b013cd4b-8507-4459-8721-1f3f7ef3b830.12a120ea-e97d-4c57-b533-c9bee1fc2aa5.1781700838.fp&direct=1') center/cover; margin-bottom: clamp(40px, 8vh, 80px); animation: nkf-slideInUp 0.8s ease both;"></div>
+    <div style="animation: nkf-slideInUp 0.8s ease both;">
+      <h2 style="margin-top: 0;">太陽を浴びて、土に触れる。<br>誰もが憧れる<span style="color: #2a6a93;">「かっこいい農業」</span>を、<br>僕らの世代から当たり前に。</h2>
+      <div class="manifesto-content" style="margin-left: 0;">
+        <p>NIHONKAI FARM は、京丹後でさつまいもを育てる若者の農園です。農業を通じて若者が地域で活動し、地域を元気にする。そして食や農業に、新しい可能性を提案していく。</p>
+        <p>太陽を浴びて働く気持ちよさ、汗をかいたあとのごはんのうまさ——その "あたりまえ" の豊かさを、まずは近しい仲間や家族と耕しながら、僕らの言葉で発信していきます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 WHAT WE DO -->
+<section id="work" class="dark">
+  <div class="what-we-do">
+    <div class="what-we-do-img" style="background-image: url('https://2e7146e5-44bc-41a7-916a-2c95c32d952f.claudeusercontent.com/v1/design/projects/2e7146e5-44bc-41a7-916a-2c95c32d952f/serve/assets/web/fukumurasaki-yaki-hand.jpg?t=1e554b9fb5e367af145744f3341423a088eaec69122da1e2a3a7ee1d7b6a4d68.b013cd4b-8507-4459-8721-1f3f7ef3b830.12a120ea-e97d-4c57-b533-c9bee1fc2aa5.1781700838.fp&direct=1');"></div>
+    <div class="what-we-do-text">
+      <div class="section-title" style="margin-bottom: 34px;">
+        <span class="number">02 — WHAT WE DO</span>
+        <span class="divider"></span>
+      </div>
+      <h2>ふくむらさきを、<br>育てて、味わう。</h2>
+      <p>主役は「ふくむらさき」。焼き芋にすると甘みがぐっと引き出され、その鮮やかな紫色はより一層映える。栽培から加工まで一貫した手がけにこだわり、ジェラートをはじめ、ふくむらさきの新しいおいしさをかたちにしています。</p>
+      <div class="tags">
+        <span class="tag">ふくむらさき</span>
+        <span class="tag">紫芋</span>
+        <span class="tag">ジェラート</span>
+        <span class="tag">栽培 → 加工</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 PRODUCTS -->
+<section id="products" class="light">
+  <div class="container">
+    <div class="section-title">
+      <span class="number">03 — PRODUCTS</span>
+      <span class="divider"></span>
+      <span class="label">商品</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="card-img" style="background-image: url('https://2e7146e5-44bc-41a7-916a-2c95c32d952f.claudeusercontent.com/v1/design/projects/2e7146e5-44bc-41a7-916a-2c95c32d952f/serve/assets/web/fukumurasaki-package.jpg?t=3934d3ee2e066dcacb5b99c025a7e48f3ffb37b360bef8de48dc108069b54251.b013cd4b-8507-4459-8721-1f3f7ef3b830.12a120ea-e97d-4c57-b533-c9bee1fc2aa5.1781700839.fp&direct=1');"></div>
+        <div class="card-content">
+          <div class="card-meta">SWEET POTATO</div>
+          <h3>ふくむらさき</h3>
+          <p>京都の高貴な紫のイメージを体現した紫芋。焼き芋にするとしっかりした甘さが引き出され、その鮮やかな紫色は一層美しく映ります。栽培から加工まで一貫した手がけで、ふくむらさきの素晴らしさを伝えていきます。オンライン販売は準備中です。</p>
+          <span class="card-btn">オンライン販売 準備中</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card-img" style="background-image: url('https://2e7146e5-44bc-41a7-916a-2c95c32d952f.claudeusercontent.com/v1/design/projects/2e7146e5-44bc-41a7-916a-2c95c32d952f/serve/assets/web/fukumurasaki-gelato.jpg?t=73ef7b894463fcf08b45b81d05098f7ccdec3b879b35c1aaafb0b05b31dfe34f.b013cd4b-8507-4459-8721-1f3f7ef3b830.12a120ea-e97d-4c57-b533-c9bee1fc2aa5.1781700839.fp&direct=1');"></div>
+        <div class="card-content">
+          <div class="card-meta">GELATO</div>
+          <h3>ふくむらさきジェラート</h3>
+          <p>自家栽培の紫芋「ふくむらさき」を、そのままジェラートに。焼き芋で引き出される自然な甘さと、その美しい発色を冷凍で閉じ込めました。京都の紫の美学を、一口で。販売サイトは準備中です。</p>
+          <span class="card-btn">販売サイト 準備中</span>
+        </div>
+      </article>
+    </div>
+    <p class="note">※ 販売開始の際はリンクを差し替えます。</p>
+  </div>
+</section>
+
+<!-- 04 MEMBERS -->
+<section id="members" class="dark" style="padding: clamp(80px, 13vh, 170px) clamp(20px, 6vw, 96px);">
+  <div class="container">
+    <div class="section-title">
+      <span class="number">04 — MEMBERS</span>
+      <span class="divider"></span>
+      <span class="label">メンバー</span>
+    </div>
+    <h2 style="margin: 0 0 clamp(28px, 4vh, 40px);">畑に立つ、三人。</h2>
+    <div style="border-radius: 18px; overflow: hidden; aspect-ratio: 16/9; background: url('https://2e7146e5-44bc-41a7-916a-2c95c32d952f.claudeusercontent.com/v1/design/projects/2e7146e5-44bc-41a7-916a-2c95c32d952f/serve/assets/web/members3.jpg?t=1900d3215567e3b875a8d2de2d42f74207bc91debac6e9749fe893ec66b8a70a.b013cd4b-8507-4459-8721-1f3f7ef3b830.12a120ea-e97d-4c57-b533-c9bee1fc2aa5.1781700838.fp&direct=1') center 26%/cover; margin-bottom: clamp(28px, 4vh, 44px); animation: nkf-slideInUp 0.8s ease both;"></div>
+    <div class="members-grid">
+      <div class="member" data-member="1">
+        <div class="member-role">01 / 代表</div>
+        <h3>松本 拓実</h3>
+        <p>京丹後市出身。前職は消防士。丹後の食の素晴らしさに惹かれ、Uターンを決意。かっこいい農業にこだわり、栽培から加工まで一貫した6次産業化を目指す。</p>
+      </div>
+      <div class="member" data-member="2">
+        <div class="member-role">02 / 広報</div>
+        <h3>池田 晴稀</h3>
+        <p>前職は消防士。人を笑顔にすることに情熱を持ち、カメラ・ドローンで農業の魅力を映像化。SNS発信を通じ、NIHONKAIFARMの想いを全国へ届ける広報の顔。</p>
+      </div>
+      <div class="member" data-member="3">
+        <div class="member-role">03 / 栽培・地域連携</div>
+        <h3>吉岡 大揮</h3>
+        <p>京丹後市出身。前職は看護師。人と人の繋がりを最も大切にし、食と農を通じて地域全体を元気にしたいという想いで、高齢者・子どもとの関係づくりを担う。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 PLACE -->
+<section class="place" id="place" style="background-image: url('https://2e7146e5-44bc-41a7-916a-2c95c32d952f.claudeusercontent.com/v1/design/projects/2e7146e5-44bc-41a7-916a-2c95c32d952f/serve/assets/web/coast.jpg?t=667c64b24819cdad468de5d3a77a5ce528892e8c0813a2738993bb879f740dc0.b013cd4b-8507-4459-8721-1f3f7ef3b830.12a120ea-e97d-4c57-b533-c9bee1fc2aa5.1781700839.fp&direct=1');">
+  <div class="place-content">
+    <div class="place-label">05 — KYOTANGO &nbsp;/&nbsp; 35.7°N 135.0°E</div>
+    <h2>海と、里山と。</h2>
+    <p>日本海に面した京丹後。豊かな海と里山に抱かれたこの土地で、僕らは畑を耕しています。土地の風と光が、ふくむらさきの甘さをつくる。</p>
+  </div>
+</section>
+
+<!-- 06 WHAT'S NEXT -->
+<section id="next" class="light">
+  <div class="container-sm">
+    <div class="section-title">
+      <span class="number">06 — WHAT'S NEXT</span>
+      <span class="divider"></span>
+      <span class="label">これから</span>
+    </div>
+    <h2 style="margin: 0 0 clamp(40px, 6vh, 64px);">農業から、暮らしへ。</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(20px, 2.4vw, 32px);">
+      <div class="whats-next-card" style="background: linear-gradient(135deg, #f3e8d8 0%, #eef1f5 100%); border-radius: 18px; padding: clamp(32px, 4vw, 48px); position: relative; overflow: hidden; animation: nkf-slideInUp 0.8s ease both;">
+        <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: rgba(42, 106, 147, 0.08); border-radius: 50%;"></div>
+        <div style="position: relative; z-index: 2;">
+          <div style="font: 700 12px 'Space Mono', monospace; letter-spacing: 0.2em; color: #2a6a93; margin-bottom: 16px; text-transform: uppercase;">NEXT 01</div>
+          <div style="width: 48px; height: 4px; background: #2a6a93; border-radius: 2px; margin-bottom: 24px;"></div>
+          <h3 style="margin: 0 0 16px; font-weight: 700; font-size: clamp(22px, 1.8vw, 28px); line-height: 1.4; color: #0c121d;">高齢者と、耕す。</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 2.0; color: rgba(12, 18, 29, 0.7);">昔は当たり前だった自給自足の暮らし。その知恵を地域の先輩から受け継ぎ、地域参加の場面で高齢者の役割をつくっていきます。</p>
+        </div>
+      </div>
+      <div class="whats-next-card" style="background: linear-gradient(135deg, #e8f1f8 0%, #eef1f5 100%); border-radius: 18px; padding: clamp(32px, 4vw, 48px); position: relative; overflow: hidden; animation: nkf-slideInUp 0.8s ease both;">
+        <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: rgba(42, 106, 147, 0.08); border-radius: 50%;"></div>
+        <div style="position: relative; z-index: 2;">
+          <div style="font: 700 12px 'Space Mono', monospace; letter-spacing: 0.2em; color: #2a6a93; margin-bottom: 16px; text-transform: uppercase;">NEXT 02</div>
+          <div style="width: 48px; height: 4px; background: #2a6a93; border-radius: 2px; margin-bottom: 24px;"></div>
+          <h3 style="margin: 0 0 16px; font-weight: 700; font-size: clamp(22px, 1.8vw, 28px); line-height: 1.4; color: #0c121d;">子どもと、食べる。</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 2.0; color: rgba(12, 18, 29, 0.7);">食育を通じて、食への関心を育てる。つくる苦労とこだわりを、次の世代へ手渡していきます。</p>
+        </div>
+      </div>
+      <div class="whats-next-card" style="background: linear-gradient(135deg, #f0e8f8 0%, #eef1f5 100%); border-radius: 18px; padding: clamp(32px, 4vw, 48px); position: relative; overflow: hidden; animation: nkf-slideInUp 0.8s ease both;">
+        <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: rgba(42, 106, 147, 0.08); border-radius: 50%;"></div>
+        <div style="position: relative; z-index: 2;">
+          <div style="font: 700 12px 'Space Mono', monospace; letter-spacing: 0.2em; color: #2a6a93; margin-bottom: 16px; text-transform: uppercase;">NEXT 03</div>
+          <div style="width: 48px; height: 4px; background: #2a6a93; border-radius: 2px; margin-bottom: 24px;"></div>
+          <h3 style="margin: 0 0 16px; font-weight: 700; font-size: clamp(22px, 1.8vw, 28px); line-height: 1.4; color: #0c121d;">暮らしを、伝える。</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 2.0; color: rgba(12, 18, 29, 0.7);">自分たちで育て、つくり、食べる。当たり前のように自給自足していた時代の豊かさを、現代の暮らしへ伝えていきたい。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" style="background-image: url('https://2e7146e5-44bc-41a7-916a-2c95c32d952f.claudeusercontent.com/v1/design/projects/2e7146e5-44bc-41a7-916a-2c95c32d952f/serve/assets/web/field-drone.jpg?t=47ec8f680b9ee2eed127edad801205d3927cbb4c8350b1e30edb29832f74ab5e.b013cd4b-8507-4459-8721-1f3f7ef3b830.12a120ea-e97d-4c57-b533-c9bee1fc2aa5.1781700840.fp&direct=1');">
+  <div class="cta-content">
+    <div class="cta-label">FOLLOW THE FIELD</div>
+    <h2>畑の日々は、<br>Instagram で。</h2>
+    <p>種まきから収穫まで、僕らの "かっこいい農業" を更新中。</p>
+    <a href="https://www.instagram.com/nihonkai_farm/" target="_blank" rel="noopener noreferrer" class="cta-btn">
+      <span>@nihonkai_farm</span>
+      <span>↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-col">
+      <img src="assets/logo-white.png" alt="NIHONKAI FARM">
+      <p>京都・京丹後で、さつまいもを育てる若者の農園。かっこいい農業を、僕らの世代から。</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <div class="footer-links-col">CONTENTS</div>
+        <div>
+          <a href="#manifesto">想い</a>
+          <a href="#work">仕事</a>
+          <a href="#products">商品</a>
+          <a href="#members">メンバー</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-links-col">CONTACT & SHOP</div>
+        <div>
+          <a href="https://www.instagram.com/nihonkai_farm/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+          <span style="color: rgba(255, 255, 255, 0.4);">オンラインショップ（準備中）</span>
+          <span style="color: rgba(255, 255, 255, 0.4);">京都府京丹後市</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 NIHONKAI FARM</span>
+    <span>KYOTANGO, KYOTO — JAPAN</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    // Scroll nav background
+    const handleScroll = () => {
+      const nav = document.getElementById('nav');
+      if (window.scrollY > 40) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section-title, h2, .card, .member, .whats-next-item').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Member card click to expand
+    const memberCards = document.querySelectorAll('.member');
+    memberCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('expanded');
+      });
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
+  }
+
+  renderVals() {
+    return {};
+  }
+}
+
+</script>
+</body>
+</html>
